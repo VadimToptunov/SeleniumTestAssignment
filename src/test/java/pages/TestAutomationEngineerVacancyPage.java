@@ -12,22 +12,22 @@ import java.util.List;
 @Slf4j
 public class TestAutomationEngineerVacancyPage {
 
-    private WebDriver driver;
-    private CustomWait customWait;
+    private static WebDriver driver;
+    private static CustomWait customWait;
 
     @FindBy(css = "[data-href=\"https://ctco.lv/careers/vacancies/test-automation-engineer-3/\"] .text-block h1")
-    private WebElement textHeader;
+    private static WebElement textHeader;
 
     @FindBy(css = "[data-href=\"https://ctco.lv/careers/vacancies/test-automation-engineer-3/\"] .wysiwyg-2 ul~ul")
-    private List<WebElement> professionalSkillsParagraph;
+    private static List<WebElement> professionalSkillsParagraph;
 
     public TestAutomationEngineerVacancyPage(WebDriver driver) {
-        this.driver = driver;
+        TestAutomationEngineerVacancyPage.driver = driver;
         PageFactory.initElements(driver, this);
         customWait = new CustomWait(driver);
     }
 
-    public long findProfessionalSkillsParagraphAndCountSkills() {
+    public static long findProfessionalSkillsParagraphAndCountSkills() {
 
         try{
             customWait.toBeVisible(textHeader);

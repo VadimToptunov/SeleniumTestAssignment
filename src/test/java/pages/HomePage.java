@@ -9,21 +9,21 @@ import waits.CustomWait;
 
 @Slf4j
 public class HomePage {
-    private  WebDriver driver;
-    private CustomWait customWait;
+    private static WebDriver driver;
+    private static CustomWait customWait;
 
     @FindBy(id = "menu-item-127")
-    private WebElement careersMenu;
+    private static WebElement careersMenu;
     @FindBy(id = "menu-item-131")
-    private WebElement vacanciesMenuItem;
+    private static WebElement vacanciesMenuItem;
 
     public HomePage(WebDriver driver) {
-        this.driver = driver;
+        HomePage.driver = driver;
         PageFactory.initElements(driver, this);
         customWait = new CustomWait(driver);
     }
 
-    public void findAndClickCareersMenu() {
+    public static void findAndClickCareersMenu() {
         try{
             customWait.toBeClickable(careersMenu).click();
             log.info("The element \"Careers menu\" is found and clicked.");
@@ -32,7 +32,7 @@ public class HomePage {
         }
     }
 
-    public void findAndClickVacanciesMenuItem() {
+    public static void findAndClickVacanciesMenuItem() {
         try{
             customWait.toBeClickable(vacanciesMenuItem).click();
             log.info("The element \"Vacancies menu item\" is found and clicked.");

@@ -10,19 +10,19 @@ import waits.CustomWait;
 @Slf4j
 public class VacanciesPage {
 
-    private WebDriver driver;
-    private CustomWait customWait;
+    private static WebDriver driver;
+    private static CustomWait customWait;
 
     @FindBy(css = "li#menu-item-5079 a")
-    private WebElement testAutomationEngineerVacancy;
+    private static WebElement testAutomationEngineerVacancy;
 
     public VacanciesPage(WebDriver driver) {
-        this.driver = driver;
+        VacanciesPage.driver = driver;
         PageFactory.initElements(driver, this);
         customWait = new CustomWait(driver);
     }
 
-    public void findAndClickTestAutomationEngineerVacancyMenuItem() {
+    public static void findAndClickTestAutomationEngineerVacancyMenuItem() {
         try{
             customWait.toBeClickable(testAutomationEngineerVacancy).click();
             log.info("The element \"Test Automation Engineer vacancy\" is found and clicked.");

@@ -7,6 +7,10 @@ import pages.TestAutomationEngineerVacancyPage;
 import pages.VacanciesPage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static pages.HomePage.findAndClickCareersMenu;
+import static pages.HomePage.findAndClickVacanciesMenuItem;
+import static pages.TestAutomationEngineerVacancyPage.findProfessionalSkillsParagraphAndCountSkills;
+import static pages.VacanciesPage.findAndClickTestAutomationEngineerVacancyMenuItem;
 
 @Slf4j
 public class AutomationEngineerPageTest extends BaseTest {
@@ -22,18 +26,16 @@ public class AutomationEngineerPageTest extends BaseTest {
     @Test
     public void testAutomationEngineerSkillsAndQualificationTest(){
         int expectedNumberOfSkills = 5;
-        HomePage homePage = new HomePage(driver);
-        homePage.findAndClickCareersMenu();
-        homePage.findAndClickVacanciesMenuItem();
+        new HomePage(driver);
+        findAndClickCareersMenu();
+        findAndClickVacanciesMenuItem();
 
-        VacanciesPage vacanciesPage = new VacanciesPage(driver);
-        vacanciesPage.findAndClickTestAutomationEngineerVacancyMenuItem();
+        new VacanciesPage(driver);
+        findAndClickTestAutomationEngineerVacancyMenuItem();
 
-        TestAutomationEngineerVacancyPage testAutomationEngineerVacancyPage =
-                new TestAutomationEngineerVacancyPage(driver);
+        new TestAutomationEngineerVacancyPage(driver);
 
-        long actualNumberOfSkills = testAutomationEngineerVacancyPage
-                .findProfessionalSkillsParagraphAndCountSkills();
+        long actualNumberOfSkills = findProfessionalSkillsParagraphAndCountSkills();
 
         assertEquals(expectedNumberOfSkills, actualNumberOfSkills,
                 "Number of skills is not equal to 5.");
